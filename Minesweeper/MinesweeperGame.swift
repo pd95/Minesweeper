@@ -49,8 +49,8 @@ class MinesweeperGame: ObservableObject {
     @Published private(set) var state: GameState = .running
     let width: Int
     let height: Int
-    var numberOfMines: Int
-    var numberOfFlags = 0
+    @Published private(set) var numberOfMines: Int
+    @Published private(set) var numberOfFlags = 0
 
     init(width: Int = 10, height: Int = 15, numberOfMines: Int = 5) {
         self.width = width

@@ -83,14 +83,14 @@ struct ContentView: View {
         switch state {
             case .outOfBounds:
                 content = "?"
-            case .covered:
+            case .covered, .uncovered(numberOfNeighbouringMines: 0):
                 content = " "
             case .explodedMine:
                 content = "💥"
             case .hiddenMine:
                 content = game.state == .lost ? "💣" : " "
-            case .uncovered(numberOfNeighbouringMines: let numberOfNeighbouringMines):
-                content = numberOfNeighbouringMines > 0 ? "\(numberOfNeighbouringMines)" : " "
+            case .uncovered(numberOfNeighbouringMines: let number):
+                content = "\(number)"
             case .flagged:
                 content = "🏴"
             case .flaggedMine:
