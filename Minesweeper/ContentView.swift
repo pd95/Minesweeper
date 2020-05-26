@@ -80,21 +80,19 @@ struct ContentView: View {
     func cellView(for row: Int, column: Int) -> some View {
         let state = game.field[row][column]
         let content: String
-        switch state {
-            case .outOfBounds:
-                content = "?"
-            case .covered, .uncovered(numberOfNeighbouringMines: 0):
-                content = " "
-            case .explodedMine:
+        switch (game.state, state) {
+            case (_, .explodedMine):
                 content = "💥"
-            case .hiddenMine:
-                content = game.state == .lost ? "💣" : " "
-            case .uncovered(numberOfNeighbouringMines: let number):
+            case (.lost, .hiddenMine), (.lost, .flaggedMine):
+                content = "💣"
+            case (_, .uncovered(numberOfNeighbouringMines: 0)):
+                content = " "
+            case (_, .uncovered(numberOfNeighbouringMines: let number)):
                 content = "\(number)"
-            case .flagged:
+            case (_, .flagged), (_, .flaggedMine):
                 content = "🏴"
-            case .flaggedMine:
-                content = game.state == .lost ? "💣" : "🏴"
+            default:
+                content = " "
         }
         return Text("xx")
             .hidden()
