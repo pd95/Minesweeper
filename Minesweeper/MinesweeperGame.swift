@@ -145,7 +145,7 @@ class MinesweeperGame: ObservableObject {
                     }
                 }
             }
-            if numberOfFlags == numberOfMines || numberOfMines == hiddenMines  {
+            if numberOfFlags == numberOfMines || hiddenMines + numberOfFlags == numberOfMines  {
                 state = .won
             }
         }
