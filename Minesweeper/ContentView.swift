@@ -89,7 +89,7 @@ struct ContentView: View {
                 content = " "
             case (_, .uncovered(numberOfNeighbouringMines: let number)):
                 content = "\(number)"
-            case (_, .flagged), (_, .flaggedMine):
+            case (.won, .hiddenMine), (_, .flagged), (_, .flaggedMine):
                 content = "🏴"
             default:
                 content = " "
