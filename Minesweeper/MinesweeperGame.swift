@@ -134,14 +134,18 @@ class MinesweeperGame: ObservableObject {
 
     private func updateGameState() {
         if state == .running {
-            if numberOfFlags == numberOfMines {
-                for row in field {
-                    for field in row {
-                        if field == .hiddenMine {
-                            return
-                        }
+            var hiddenMines = 0
+            for row in field {
+                for field in row {
+                    if field == .hiddenMine {
+                        hiddenMines += 1
+                    }
+                    else if field == .covered {
+                        return
                     }
                 }
+            }
+            if numberOfFlags == numberOfMines || numberOfMines == hiddenMines  {
                 state = .won
             }
         }
