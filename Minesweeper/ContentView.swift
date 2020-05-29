@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ContentView: View {
     @ObservedObject var game = MinesweeperGame()
@@ -81,6 +82,7 @@ struct Board: View {
     @EnvironmentObject var game: MinesweeperGame
 
     @State private var feedback = UINotificationFeedbackGenerator()
+    @State var player = try? AVAudioPlayer(data: NSDataAsset(name: "Explosion")!.data)
 
     var body: some View {
         VStack(spacing: 0) {
@@ -100,6 +102,7 @@ struct Board: View {
                 let field = self.game.uncover(location: (row, column))
                 if field == .explodedMine {
                     self.feedback.notificationOccurred(.error)
+                    self.player?.play()
                 }
             }
             .onLongPressGesture() {
