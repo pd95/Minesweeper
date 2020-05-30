@@ -22,6 +22,10 @@ class MinesweeperGame: ObservableObject {
             return self == .flaggedMine || self == .hiddenMine || self == .explodedMine
         }
 
+        var hasFlag: Bool {
+            return self == .flaggedMine || self == .flagged
+        }
+
         var description: String {
             switch self {
                 case .outOfBounds:
@@ -117,7 +121,11 @@ class MinesweeperGame: ObservableObject {
         }
         let oldState = fieldState(at: location)
         let state: FieldState
-        if oldState.hasMine {
+        if oldState.hasFlag {
+            state = oldState
+            hapticFeedback.notificationOccurred(.warning)
+        }
+        else if oldState.hasMine {
             state = .explodedMine
             self.state = .lost
             audioFeedback.play(.explosion)
