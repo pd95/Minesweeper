@@ -52,6 +52,14 @@ class MinesweeperGame: ObservableObject {
     @Published private(set) var numberOfMines: Int
     @Published private(set) var numberOfFlags = 0
 
+    // Interaction with audio feedback
+    private var audioFeedback = AudioFeedback()
+    @Published var isMute = false {
+        didSet {
+            audioFeedback.isMute = isMute
+        }
+    }
+
     init(width: Int = 10, height: Int = 15, numberOfMines: Int = 5) {
         self.width = width
         self.height = height
@@ -84,6 +92,9 @@ class MinesweeperGame: ObservableObject {
         }
         numberOfFlags = 0
         self.state = .running
+
+        audioFeedback.stopAll()
+        audioFeedback.prepare(.explosion)
     }
 
     func fieldState(at location: (row: Int, column: Int)) -> FieldState {
@@ -105,6 +116,7 @@ class MinesweeperGame: ObservableObject {
         if oldState.hasMine {
             state = .explodedMine
             self.state = .lost
+            audioFeedback.play(.explosion)
         }
         else {
             var mineCount = 0

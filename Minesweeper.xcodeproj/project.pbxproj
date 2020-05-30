@@ -14,6 +14,7 @@
 		178FEF52247AD771001059E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178FEF51247AD771001059E7 /* Preview Assets.xcassets */; };
 		178FEF55247AD771001059E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178FEF53247AD771001059E7 /* LaunchScreen.storyboard */; };
 		178FEF5D247AD782001059E7 /* MinesweeperGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FEF5C247AD782001059E7 /* MinesweeperGame.swift */; };
+		1797616024823C710053C10B /* AudioFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1797615F24823C710053C10B /* AudioFeedback.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		178FEF54247AD771001059E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		178FEF56247AD771001059E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		178FEF5C247AD782001059E7 /* MinesweeperGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperGame.swift; sourceTree = "<group>"; };
+		1797615F24823C710053C10B /* AudioFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedback.swift; sourceTree = "<group>"; };
 		17E4EAB7247B208E00EF6F93 /* Minesweeper.pxd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Minesweeper.pxd; sourceTree = "<group>"; };
 		17E4EABB247B20D900EF6F93 /* Artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artwork.png; sourceTree = "<group>"; };
 		17E4EABD247B22BB00EF6F93 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				178FEF4A247AD76E001059E7 /* SceneDelegate.swift */,
 				178FEF4C247AD76E001059E7 /* ContentView.swift */,
 				178FEF5C247AD782001059E7 /* MinesweeperGame.swift */,
+				1797615F24823C710053C10B /* AudioFeedback.swift */,
 				178FEF4E247AD771001059E7 /* Assets.xcassets */,
 				178FEF53247AD771001059E7 /* LaunchScreen.storyboard */,
 				178FEF56247AD771001059E7 /* Info.plist */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				178FEF49247AD76E001059E7 /* AppDelegate.swift in Sources */,
+				1797616024823C710053C10B /* AudioFeedback.swift in Sources */,
 				178FEF4B247AD76E001059E7 /* SceneDelegate.swift in Sources */,
 				178FEF5D247AD782001059E7 /* MinesweeperGame.swift in Sources */,
 				178FEF4D247AD76E001059E7 /* ContentView.swift in Sources */,
