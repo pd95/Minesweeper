@@ -15,7 +15,7 @@ struct ContentView: View {
     var gameState: String {
         switch game.state {
             case .running:
-                return "Can you locate the \(game.numberOfMines) mines?"
+                return "Can you locate the \(game.numberOfMines - game.numberOfFlags)\(game.numberOfFlags > 0 ? " remaining" : "") mines?"
             case .lost:
                 return "The game is over. You have lost!"
             case .won:
