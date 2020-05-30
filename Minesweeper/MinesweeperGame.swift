@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MinesweeperGame: ObservableObject {
 
@@ -60,6 +61,9 @@ class MinesweeperGame: ObservableObject {
         }
     }
 
+    // Haptic feedback
+    private var hapticFeedback = UINotificationFeedbackGenerator()
+
     init(width: Int = 10, height: Int = 15, numberOfMines: Int = 5) {
         self.width = width
         self.height = height
@@ -105,11 +109,11 @@ class MinesweeperGame: ObservableObject {
         return field[location.row][location.column]
     }
 
-    func uncover(location: (row: Int, column: Int), initial: Bool = true) -> FieldState {
+    func uncover(location: (row: Int, column: Int), initial: Bool = true) {
         guard state == .running,
             (0..<height).contains(location.row),
             (0..<width).contains(location.column) else {
-            return .outOfBounds
+            return
         }
         let oldState = fieldState(at: location)
         let state: FieldState
@@ -117,6 +121,7 @@ class MinesweeperGame: ObservableObject {
             state = .explodedMine
             self.state = .lost
             audioFeedback.play(.explosion)
+            hapticFeedback.notificationOccurred(.error)
         }
         else {
             var mineCount = 0
@@ -140,8 +145,6 @@ class MinesweeperGame: ObservableObject {
         if initial {
             updateGameState()
         }
-
-        return state
     }
 
     private func updateGameState() {
@@ -174,11 +177,11 @@ class MinesweeperGame: ObservableObject {
         }
     }
 
-    func flagMine(at location: (row: Int, column: Int)) -> Bool {
+    func flagMine(at location: (row: Int, column: Int)) {
         guard state == .running,
             (0..<height).contains(location.row),
             (0..<width).contains(location.column) else {
-            return false
+            return
         }
         let oldNumberOfFlags = numberOfFlags
         let state = field[location.row][location.column]
@@ -201,6 +204,8 @@ class MinesweeperGame: ObservableObject {
 
         updateGameState()
 
-        return oldNumberOfFlags < numberOfFlags
+        if oldNumberOfFlags < numberOfFlags {
+            hapticFeedback.notificationOccurred(.success)
+        }
     }
 }

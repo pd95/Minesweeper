@@ -80,8 +80,6 @@ struct GameEnded: View {
 struct Board: View {
     @EnvironmentObject var game: MinesweeperGame
 
-    @State private var feedback = UINotificationFeedbackGenerator()
-
     var body: some View {
         VStack(spacing: 0) {
             ForEach(0..<game.height, id: \.self) { row in
@@ -97,15 +95,10 @@ struct Board: View {
     func fieldView(for row: Int, column: Int) -> some View {
         return Field(gameState: game.state, fieldState: game.field[row][column])
             .onTapGesture {
-                let field = self.game.uncover(location: (row, column))
-                if field == .explodedMine {
-                    self.feedback.notificationOccurred(.error)
-                }
+                self.game.uncover(location: (row, column))
             }
             .onLongPressGesture() {
-                if self.game.flagMine(at: (row, column)) {
-                    self.feedback.notificationOccurred(.success)
-                }
+                self.game.flagMine(at: (row, column))
             }
     }
 }
