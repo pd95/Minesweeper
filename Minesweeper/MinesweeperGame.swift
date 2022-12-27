@@ -143,7 +143,7 @@ class MinesweeperGame: ObservableObject {
         field[location.row][location.column] = state
 
         // Make sure flag counter is decremented if a flag is uncovered
-        if oldState == .flagged {
+        if oldState == .flagged && oldState != state {
             numberOfFlags -= 1
         }
 
