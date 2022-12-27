@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var game: MinesweeperGame
 
-    var gameState: String {
+    private var gameState: String {
         switch game.state {
             case .running:
                 return "Can you locate the \(game.numberOfMines - game.numberOfFlags)\(game.numberOfFlags > 0 ? " remaining" : "") mines?"
@@ -61,19 +61,19 @@ struct GameEnded: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
-    var buttonText: String {
+    private var buttonText: String {
         if game.state == .won {
             return "Next level"
         }
         return "Try again"
     }
 
-    func restart() {
-        var numberOfMines = self.game.numberOfMines
-        if self.game.state == .won {
+    private func restart() {
+        var numberOfMines = game.numberOfMines
+        if game.state == .won {
             numberOfMines += 5
         }
-        self.game.reset(numberOfMines: numberOfMines)
+        game.reset(numberOfMines: numberOfMines)
     }
 }
 
@@ -84,21 +84,21 @@ struct Board: View {
         VStack(spacing: 0) {
             ForEach(0..<game.height, id: \.self) { row in
                 HStack(spacing: 0) {
-                    ForEach(0..<self.game.width, id: \.self) { column in
-                        self.fieldView(for: row, column: column)
+                    ForEach(0..<game.width, id: \.self) { column in
+                        fieldView(for: row, column: column)
                     }
                 }
             }
         }
     }
 
-    func fieldView(for row: Int, column: Int) -> some View {
-        return Field(gameState: game.state, fieldState: game.field[row][column])
+    private func fieldView(for row: Int, column: Int) -> some View {
+        Field(gameState: game.state, fieldState: game.field[row][column])
             .onTapGesture {
-                self.game.uncover(location: (row, column))
+                game.uncover(location: (row, column))
             }
             .onLongPressGesture() {
-                self.game.flagMine(at: (row, column))
+                game.flagMine(at: (row, column))
             }
     }
 }

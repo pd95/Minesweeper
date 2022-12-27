@@ -28,20 +28,20 @@ class MinesweeperGame: ObservableObject {
 
         var description: String {
             switch self {
-                case .outOfBounds:
-                    return "?"
-                case .covered:
-                    return "_"
-                case .explodedMine:
-                    return "💥"
-                case .hiddenMine:
-                    return "💣"
-                case .uncovered(numberOfNeighbouringMines: let numberOfNeighbouringMines):
-                    return numberOfNeighbouringMines > 0 ? "\(numberOfNeighbouringMines)" : " "
-                case .flagged:
-                    return "🏴"
-                case .flaggedMine:
-                    return "🏴‍☠️"
+            case .outOfBounds:
+                return "?"
+            case .covered:
+                return "_"
+            case .explodedMine:
+                return "💥"
+            case .hiddenMine:
+                return "💣"
+            case .uncovered(numberOfNeighbouringMines: let numberOfNeighbouringMines):
+                return numberOfNeighbouringMines > 0 ? "\(numberOfNeighbouringMines)" : " "
+            case .flagged:
+                return "🏴"
+            case .flaggedMine:
+                return "🏴‍☠️"
             }
         }
     }
@@ -77,8 +77,8 @@ class MinesweeperGame: ObservableObject {
 
     func reset(numberOfMines: Int? = nil) {
         let numberOfMines = numberOfMines ?? self.numberOfMines
-        guard numberOfMines > 0 && numberOfMines < self.width * self.height / 4 else {
-            self.state = .lost
+        guard numberOfMines > 0 && numberOfMines < width * height / 4 else {
+            state = .lost
             return
         }
         self.numberOfMines = numberOfMines
@@ -99,7 +99,7 @@ class MinesweeperGame: ObservableObject {
             }
         }
         numberOfFlags = 0
-        self.state = .running
+        state = .running
 
         audioFeedback.stopAll()
         audioFeedback.prepare(.explosion)
@@ -115,8 +115,8 @@ class MinesweeperGame: ObservableObject {
 
     func uncover(location: (row: Int, column: Int), initial: Bool = true) {
         guard state == .running,
-            (0..<height).contains(location.row),
-            (0..<width).contains(location.column) else {
+              (0..<height).contains(location.row),
+              (0..<width).contains(location.column) else {
             return
         }
         let oldState = fieldState(at: location)
@@ -179,7 +179,7 @@ class MinesweeperGame: ObservableObject {
             for dx in -1...1 {
                 let newLocation = (location.row + dy, location.column + dx)
                 if fieldState(at: newLocation) == .covered {
-                    _ = uncover(location: newLocation, initial: false)
+                    uncover(location: newLocation, initial: false)
                 }
             }
         }
@@ -187,8 +187,8 @@ class MinesweeperGame: ObservableObject {
 
     func flagMine(at location: (row: Int, column: Int)) {
         guard state == .running,
-            (0..<height).contains(location.row),
-            (0..<width).contains(location.column) else {
+              (0..<height).contains(location.row),
+              (0..<width).contains(location.column) else {
             return
         }
         let oldNumberOfFlags = numberOfFlags

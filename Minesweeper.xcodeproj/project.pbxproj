@@ -11,7 +11,6 @@
 		178FEF4B247AD76E001059E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FEF4A247AD76E001059E7 /* SceneDelegate.swift */; };
 		178FEF4D247AD76E001059E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FEF4C247AD76E001059E7 /* ContentView.swift */; };
 		178FEF4F247AD771001059E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178FEF4E247AD771001059E7 /* Assets.xcassets */; };
-		178FEF52247AD771001059E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178FEF51247AD771001059E7 /* Preview Assets.xcassets */; };
 		178FEF55247AD771001059E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178FEF53247AD771001059E7 /* LaunchScreen.storyboard */; };
 		178FEF5D247AD782001059E7 /* MinesweeperGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FEF5C247AD782001059E7 /* MinesweeperGame.swift */; };
 		1797616024823C710053C10B /* AudioFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1797615F24823C710053C10B /* AudioFeedback.swift */; };
@@ -23,7 +22,6 @@
 		178FEF4A247AD76E001059E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		178FEF4C247AD76E001059E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		178FEF4E247AD771001059E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		178FEF51247AD771001059E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		178FEF54247AD771001059E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		178FEF56247AD771001059E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		178FEF5C247AD782001059E7 /* MinesweeperGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperGame.swift; sourceTree = "<group>"; };
@@ -75,17 +73,8 @@
 				178FEF53247AD771001059E7 /* LaunchScreen.storyboard */,
 				178FEF56247AD771001059E7 /* Info.plist */,
 				17976161248244CF0053C10B /* Minesweeper.entitlements */,
-				178FEF50247AD771001059E7 /* Preview Content */,
 			);
 			path = Minesweeper;
-			sourceTree = "<group>";
-		};
-		178FEF50247AD771001059E7 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				178FEF51247AD771001059E7 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		17E4EAB6247B208E00EF6F93 /* AppIcon */ = {
@@ -156,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				178FEF55247AD771001059E7 /* LaunchScreen.storyboard in Resources */,
-				178FEF52247AD771001059E7 /* Preview Assets.xcassets in Resources */,
 				178FEF4F247AD771001059E7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +298,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = P8CC95REUG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
@@ -332,7 +319,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = P8CC95REUG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
