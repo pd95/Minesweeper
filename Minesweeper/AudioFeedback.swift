@@ -35,7 +35,9 @@ class AudioFeedback {
             print("Unable to initialize AVAudioPlayer with asset \(assetName)")
             return
         }
+        #if !targetEnvironment(simulator)
         player.prepareToPlay()
+        #endif
         playerCache[assetName] = player
     }
 
@@ -47,7 +49,11 @@ class AudioFeedback {
             print("Asset \(asset.rawValue) has no associated player. Did you call prepare(.\(asset.rawValue)?")
             return
         }
+        #if targetEnvironment(simulator)
+        print(asset)
+        #else
         player.play()
+        #endif
     }
 
     func stop(_ asset: AudioAsset) {
@@ -55,7 +61,9 @@ class AudioFeedback {
             print("Asset \(asset.rawValue) has no associated player. Did you call prepare(.\(asset.rawValue)?")
             return
         }
+        #if !targetEnvironment(simulator)
         player.stop()
+        #endif
     }
 
     func stopAll() {
