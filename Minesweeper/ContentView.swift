@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var game = MinesweeperGame()
+    @ObservedObject var game: MinesweeperGame
 
     var gameState: String {
         switch game.state {
@@ -139,6 +139,6 @@ struct Field: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(game: .init())
     }
 }
