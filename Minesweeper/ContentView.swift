@@ -34,7 +34,7 @@ struct ContentView: View {
 
                 GameEnded()
                     .opacity(game.state != .running ? 1 : 0)
-                    .animation(Animation.easeIn)
+                    .animation(.easeIn(duration: 0.3))
             }
             Spacer()
         }
@@ -49,23 +49,32 @@ struct GameEnded: View {
     var body: some View {
         Button(action: restart) {
             Text(buttonText)
+                .font(.headline)
+                .frame(minWidth: 40, minHeight: 40)
                 .padding()
+                .animation(nil)
                 .background(RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.red)
+                    .fill(.red)
                     .shadow(radius: 10)
                 )
-                .foregroundColor(Color.white)
+                .foregroundColor(.white)
+                .padding()
+                .contentShape(Rectangle())
         }
-        .frame(maxWidth: 300, maxHeight: 300)
-        .background(Color.white.opacity(0.3))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white.opacity(0.5))
     }
 
     private var buttonText: String {
-        if game.state == .won {
+        switch game.state {
+        case .lost:
+            return "Try again"
+        case .won:
             return "Next level"
+        default:
+            return ""
         }
-        return "Try again"
     }
 
     private func restart() {
